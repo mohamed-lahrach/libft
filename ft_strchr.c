@@ -10,37 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-size_t ft_strlen(const char *s)
-{
-    int len = 0;
-    while (*s != '\0')
-    {
-      len++;
-      s++;
-    }
-    return len;
-}
+#include "libft.h"
+
 char	*ft_strchr(const char *str, int c)
 {
-	int	idx;
-
-	idx = ft_strlen((char *)str) + 1;
-	while (idx--)
+	while (*str)
 	{
-		if (*(str + idx) == c)
-			return ((char *)(str + idx));
+		if (*str == c)
+			return ((char *)str);
+		str++;
 	}
+	if (c == '\0')
+		return ((char *)str);
 	return (0);
 }
-// int main() {
-//     const char *str1 = "Hello, World!";
-//     char *found1 = ft_strchr(str1, 'o');
 
-//     if (found1 != NULL) {
-//         printf("Found 'o' at position %ld\n", found1 - str1);
-//     } else {
-//         printf("Character not found in str1.\n");
-//     }
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	const char	*str1 = "Hello, World!";
+// 	char		*found1;
+
+// 	found1 = ft_strchr(str1, '\0');
+// 	printf("Here is the string from `%c` : `%s`\n", *found1, found1);
+
+// 	printf("____________________________\n");
+// 	const char *str = "Hello, World!";
+//     char *found;
+//     found = strchr(str, '\0');
+// 	printf("Here is the string from `%c` : `%s`\n", *found, found);
 // }

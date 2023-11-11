@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlahrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 20:54:32 by mlahrach          #+#    #+#             */
-/*   Updated: 2023/11/03 23:16:43 by mlahrach         ###   ########.fr       */
+/*   Created: 2023/11/05 18:15:59 by mlahrach          #+#    #+#             */
+/*   Updated: 2023/11/05 18:16:02 by mlahrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+void	ft_bzero(void *s, size_t n)
 {
-	int	d_len;
-	int	s_len;
-	int	offset;
-	int	src_index;
+	size_t			i;
+	unsigned char	*str;
 
-	d_len = ft_strlen(dst);
-	s_len = ft_strlen(src);
-	offset = d_len;
-	src_index = 0;
-	while (*(src + src_index) != '\0')
+	str = (unsigned char *) s;
+	i = 0;
+	while (i < n)
 	{
-		*(dst + offset) = *(src + src_index);
-		offset++;
-		src_index++;
-		if (offset == dstsize - 1)
-			break ;
+		str[i] = 0;
+		i++;
 	}
-	*(dst + offset) = '\0';
-	return (d_len + s_len);
 }
+
+// #include <string.h>
+// #include <stdio.h>
+// #include <strings.h>
+
+// int main()
+// {
+// 	char tab1[] = "qwertyuiop";
+// 	char tab2[] = "qwertyuiop";
+
+// 	ft_bzero(tab1,3);
+// 	bzero(tab2,3);
+
+// 	printf("me : `%s`\n",tab1);
+// 	printf("their :`%s`",tab2);
+// }
