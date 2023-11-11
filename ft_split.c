@@ -52,6 +52,7 @@ char **ft_split(char const *s, char c)
     char *p;
 
     num_of_words = count_words((char*)s, c);
+    printf("%i\n", num_of_words);
     array_of_words = (char **)malloc(num_of_words * sizeof(char *));
     if (array_of_words == NULL) {
         return 0;
@@ -61,6 +62,7 @@ char **ft_split(char const *s, char c)
     len_of_word = 0;
     while (i < num_of_words)
     {
+        printf("%i\n", i);
         while(is_valid_char(*p, c) && *p != '\0')
         {
             len_of_word++;
@@ -70,6 +72,8 @@ char **ft_split(char const *s, char c)
         len_of_word = 0;
         i++;
         p++;
+        
+
     }
     p = (char*)s;
     i = 0;
@@ -78,11 +82,13 @@ char **ft_split(char const *s, char c)
         while (is_valid_char(*p, c) && *p != '\0')
         {
             array_of_words[i][j] = *p;
+            printf("'%c'", *p);
             p++;
             j++;
         }
-        j++;
+        printf(" \n");
         array_of_words[i][j] = '\0';
+        j++;
         p++;
         i++;
         j = 0;
@@ -91,10 +97,12 @@ char **ft_split(char const *s, char c)
 }
 
 int main() {
-  char **arr = ft_split("To be or not to be, + That is the question.", '+');
-  for( int i = 0 ; i < count_words("To be or not to be, + That is the question.", '+'); i++)
+   char *str =  "mie fmf+dsffds + 02a";
+   char sep = '+';
+  char **arr = ft_split(str, sep);
+  for( int i = 0 ; i < count_words(str, sep); i++)
   {
-    printf("\narr[%i] : %s\n",i,  arr[i]);
+    printf("\narr[%i] : '%s'\n",i,  arr[i]);
   }
   return 0;
 }
